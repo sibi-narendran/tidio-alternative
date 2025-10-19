@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { apiCall } from "@/config/api";
+import { supabase } from "@/lib/supabaseClient";
+import { addEmail } from "@/lib/emailStore";
+import { trackFormSubmit, trackAdsConversion } from "@/lib/analytics";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -18,50 +19,31 @@ const Signup = () => {
     setIsLoading(true);
     
     try {
-      // Submit email to backend API
-      const response = await apiCall('emails', {
-        method: 'POST',
-        body: JSON.stringify({ email })
-      });
-
-      const result = await response.json();
-      
-      if (result.success) {
-        console.log('Email submitted successfully:', email);
-        
-        // Track conversion event in Google Analytics
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'form_submit', {
-            event_category: 'engagement',
-            event_label: 'email_signup',
-            value: 1
-          });
-
-          // Track Google Ads conversion
-          gtag('event', 'conversion', {
-            'send_to': 'AW-10872232955/oI5hCKLM7KgbEPu3pMAo',
-            'value': 1.0,
-            'currency': 'USD',
-            'event_category': 'Lead',
-            'event_label': 'Submit lead form'
-          });
-        }
-        
-        setIsSubmitted(true);
-      } else {
-        console.error('Failed to submit email:', result.error);
-        alert('Failed to submit email. Please try again.');
-      }
+      await addEmail(email);
+      trackFormSubmit();
+      trackAdsConversion();
+      setIsSubmitted(true);
     } catch (error) {
-      console.error('Network error:', error);
-      alert('Network error. Please check your connection and try again.');
+      console.error('Failed to submit email:', error);
+      alert('Failed to submit email. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleGoBack = () => {
-    navigate(-1);
+  // Simple placeholder actions for OAuth/SSO (non-functional in this demo)
+  const notImplemented = (provider: string) => {
+    alert(`${provider} sign-in isn’t set up yet.`);
+  };
+
+  const handleGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: window.location.origin + '/signup'
+      }
+    });
+    if (error) alert(error.message);
   };
 
   if (isSubmitted) {
@@ -69,11 +51,7 @@ const Signup = () => {
       <div className="min-h-screen bg-white flex items-center justify-center px-4 pt-20">
         <div className="w-full max-w-lg">
           <div className="bg-white border border-gray-200 rounded-2xl p-12 text-center shadow-2xl">
-            <h1 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">
-              <span className="text-orange-500">dooza forms</span>
-            </h1>
-            
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Welcome!
             </h2>
             
@@ -96,64 +74,61 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4 pt-20">
-      <div className="w-full max-w-lg">
+      <div className="w-full max-w-xl">
         <div className="bg-white border border-gray-200 rounded-2xl p-12 shadow-2xl">
-          
-          {/* Back button */}
-          <div className="flex items-center gap-2 mb-10">
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={handleGoBack}
-              className="p-3 hover:bg-gray-100 rounded-full transition-all"
-            >
-              <ArrowLeft className="w-5 h-5 text-gray-600" />
-            </Button>
-          </div>
-          
-          {/* Main content */}
-          <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-black mb-4 text-gray-900">
-              <span className="text-orange-500">dooza forms</span>
+          <div className="mb-10">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
+              Log in or Sign up
             </h1>
-            
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Start Free Trial
-            </h2>
-            
-            <p className="text-lg text-gray-600">
-              No credit card required
+            <p className="mt-4 text-gray-600 text-lg">
+              Get better data with conversational forms, surveys, quizzes & more.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
+          <div className="space-y-3">
+            <Button
+              variant="outline"
+              className="w-full h-14 rounded-xl border-2 border-gray-300 bg-white text-gray-900 hover:bg-gray-50 justify-start px-5"
+              type="button"
+              onClick={handleGoogle}
+            >
+              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
+              <span className="ml-3 text-base">Continue with Google</span>
+            </Button>
+          </div>
+
+          <div className="my-8 border-t" />
+
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-4">
               <Input
                 type="email"
-                placeholder="Enter your work email"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-14 text-lg rounded-lg border-2 border-gray-300 focus:border-orange-500 focus:ring-0 transition-all duration-300"
+                className="h-14 text-base rounded-xl border-2 border-gray-300 focus:border-orange-500 focus:ring-0"
                 disabled={isLoading}
               />
-            </div>
 
-            <Button 
-              type="submit" 
-              className="w-full h-14 text-lg font-semibold bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
-              disabled={isLoading || !email}
-            >
-              {isLoading ? (
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  Setting up...
-                </div>
-              ) : (
-                "Get Started"
-              )}
-            </Button>
+              <Button
+                type="submit"
+                className="w-full h-14 text-base font-semibold rounded-xl bg-[#2f2830] text-white hover:bg-[#262027]"
+                disabled={isLoading || !email}
+              >
+                {isLoading ? (
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Setting up...
+                  </div>
+                ) : (
+                  "Continue with email"
+                )}
+              </Button>
+            </div>
           </form>
+
+          
         </div>
       </div>
     </div>

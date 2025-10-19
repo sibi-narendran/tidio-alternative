@@ -71,3 +71,9 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+---
+
+## Notes on Backend
+
+This app now uses Supabase directly from the frontend for email collection and analytics. The legacy Express backend (`backend/`) and local API routes (`/api`) are no longer required during development. You can remove them if you don't plan to deploy a custom backend.

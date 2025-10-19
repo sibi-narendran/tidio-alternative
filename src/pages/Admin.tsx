@@ -3,15 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Users, Mail, Calendar, Download, Trash2 } from "lucide-react";
-import { apiCall } from "@/config/api";
-
-interface EmailEntry {
-  id: string;
-  email: string;
-  timestamp: string;
-  ip_address?: string;
-  user_agent?: string;
-}
+import { getEmails, clearAllEmails, calculateStats, EmailEntry } from "@/lib/emailStore";
 
 interface Stats {
   total: number;
@@ -27,30 +19,18 @@ const Admin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Load emails and stats from API
+    // Load emails and stats directly from Supabase
     const loadData = async () => {
       try {
         setError(null);
         
-        // Fetch emails
-        const emailsResponse = await apiCall('emails');
-        const emailsData = await emailsResponse.json();
-        
-        // Fetch stats  
-        const statsResponse = await apiCall('stats');
-        const statsData = await statsResponse.json();
-        
-        if (emailsData.success) {
-          setEmails(emailsData.emails);
-        }
-        
-        if (statsData.success) {
-          setStats(statsData.stats);
-        }
+        const list = await getEmails();
+        setEmails(list);
+        setStats(calculateStats(list));
         
       } catch (error) {
         console.error('Error loading data:', error);
-        setError('Failed to connect to backend API. Make sure the server is running.');
+        setError('Failed to load data from Supabase.');
       } finally {
         setIsLoading(false);
       }
@@ -84,19 +64,10 @@ const Admin = () => {
   const handleClearEmails = async () => {
     if (window.confirm('Are you sure you want to delete all email entries? This cannot be undone.')) {
       try {
-        const response = await apiCall('emails', {
-          method: 'DELETE'
-        });
-        
-        const result = await response.json();
-        
-        if (result.success) {
-          setEmails([]);
-          setStats({ total: 0, today: 0, week: 0 });
-          alert(`Successfully deleted ${result.deletedCount} email records.`);
-        } else {
-          alert('Failed to delete emails. Please try again.');
-        }
+        const deleted = await clearAllEmails();
+        setEmails([]);
+        setStats({ total: 0, today: 0, week: 0 });
+        alert(`Successfully deleted ${deleted} email records.`);
       } catch (error) {
         console.error('Error deleting emails:', error);
         alert('Network error. Please try again.');
