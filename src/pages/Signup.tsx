@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+// OTP inputs removed for one-click confirmation flow
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 import { addEmail } from "@/lib/emailStore";
@@ -10,6 +11,9 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [mode, setMode] = useState<'signup' | 'login'>('signup');
+  const [password, setPassword] = useState("");
+  // One-click confirmation flow; no OTP state needed
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,19 +35,32 @@ const Signup = () => {
     }
   };
 
-  // Simple placeholder actions for OAuth/SSO (non-functional in this demo)
-  const notImplemented = (provider: string) => {
-    alert(`${provider} sign-in isn’t set up yet.`);
-  };
-
-  const handleGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: window.location.origin + '/signup'
+  // Auth flow: signup uses one-click email confirmation; login uses password
+  const handleAuth = async () => {
+    if (!email) return;
+    setIsLoading(true);
+    try {
+      if (mode === 'signup') {
+        const { error } = await supabase.auth.signInWithOtp({
+          email,
+          options: {
+            shouldCreateUser: true,
+            emailRedirectTo: window.location.origin + '/auth/callback'
+          }
+        });
+        if (error) throw error;
+        setIsSubmitted(true);
+      } else {
+        if (!password) return;
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        navigate('/');
       }
-    });
-    if (error) alert(error.message);
+    } catch (err: any) {
+      alert(err?.message || 'Authentication failed');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -85,19 +102,15 @@ const Signup = () => {
             </p>
           </div>
 
-          <div className="space-y-3">
-            <Button
-              variant="outline"
-              className="w-full h-14 rounded-xl border-2 border-gray-300 bg-white text-gray-900 hover:bg-gray-50 justify-start px-5"
-              type="button"
-              onClick={handleGoogle}
-            >
-              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
-              <span className="ml-3 text-base">Continue with Google</span>
+          {/* Toggle signup/login */}
+          <div className="flex gap-2 mb-6">
+            <Button type="button" variant={mode === 'signup' ? 'default' : 'outline'} className="flex-1" onClick={() => setMode('signup')}>
+              Sign up
+            </Button>
+            <Button type="button" variant={mode === 'login' ? 'default' : 'outline'} className="flex-1" onClick={() => setMode('login')}>
+              Log in
             </Button>
           </div>
-
-          <div className="my-8 border-t" />
 
           <form onSubmit={handleSubmit}>
             <div className="space-y-4">
@@ -110,24 +123,34 @@ const Signup = () => {
                 className="h-14 text-base rounded-xl border-2 border-gray-300 focus:border-orange-500 focus:ring-0"
                 disabled={isLoading}
               />
+              {/* Password used only for login in this flow */}
+              <Input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required={mode === 'login'}
+                className="h-14 text-base rounded-xl border-2 border-gray-300 focus:border-orange-500 focus:ring-0"
+                disabled={isLoading}
+              />
 
               <Button
-                type="submit"
+                type="button"
+                onClick={handleAuth}
                 className="w-full h-14 text-base font-semibold rounded-xl bg-[#2f2830] text-white hover:bg-[#262027]"
-                disabled={isLoading || !email}
+                disabled={isLoading || !email || (mode === 'login' && !password)}
               >
                 {isLoading ? (
                   <div className="flex items-center gap-3">
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Setting up...
+                    {mode === 'signup' ? 'Sending link...' : 'Logging in...'}
                   </div>
                 ) : (
-                  "Continue with email"
+                  mode === 'signup' ? 'Email me a confirmation link' : 'Log in'
                 )}
               </Button>
             </div>
           </form>
-
           
         </div>
       </div>
