@@ -79,6 +79,14 @@ const Header = () => {
               Book a Call
             </Button>
             <Button 
+              variant="ghost" 
+              size="sm" 
+              className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
+              onClick={() => navigate('/signin')}
+            >
+              Sign in
+            </Button>
+            <Button 
               variant="default" 
               size="sm" 
               className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"

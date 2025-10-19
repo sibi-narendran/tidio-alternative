@@ -18,16 +18,15 @@ export async function addEmail(email: string): Promise<EmailEntry> {
   const nowIso = new Date().toISOString();
   const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent : undefined;
 
+  // Upsert by email to avoid duplicates if function is called multiple times
   const { data, error } = await supabase
     .from('emails')
-    .insert([
-      {
-        email,
-        timestamp: nowIso,
-        ip_address: null,
-        user_agent: userAgent || null,
-      },
-    ])
+    .upsert({
+      email,
+      timestamp: nowIso,
+      ip_address: null,
+      user_agent: userAgent || null,
+    }, { onConflict: 'email' })
     .select('id, email, timestamp, ip_address, user_agent')
     .single();
 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { addEmail } from "@/lib/emailStore";
 import { trackFormSubmit, trackAdsConversion } from "@/lib/analytics";
+import { supabase } from "@/lib/supabaseClient";
 
 const AuthCallback = () => {
   const navigate = useNavigate();
@@ -11,12 +12,22 @@ const AuthCallback = () => {
     // If we have the user email in the URL (optional); otherwise just proceed
     const params = new URLSearchParams(window.location.search);
     const email = params.get('email');
-    if (email) {
-      addEmail(email).then(() => {
-        trackFormSubmit();
-        trackAdsConversion();
-      }).catch(() => {});
-    }
+    (async () => {
+      try {
+        if (email) {
+          // apply pending password if present
+          const key = `pendingPwd:${email}`;
+          const pending = localStorage.getItem(key);
+          if (pending) {
+            await supabase.auth.updateUser({ password: pending });
+            localStorage.removeItem(key);
+          }
+          await addEmail(email);
+          trackFormSubmit();
+          trackAdsConversion();
+        }
+      } catch (_) {}
+    })();
   }, []);
 
   return (
@@ -29,9 +40,14 @@ const AuthCallback = () => {
           <p className="text-lg text-gray-600 mb-10">
             Your email has been confirmed. Welcome to dooza forms.
           </p>
-          <Button onClick={() => navigate('/')} className="w-full h-12 rounded-xl">
-            Go to Home
-          </Button>
+          <div className="flex gap-3">
+            <Button onClick={() => navigate('/dashboard')} className="w-full h-12 rounded-xl">
+              Go to Dashboard
+            </Button>
+            <Button onClick={() => navigate('/')} variant="outline" className="w-full h-12 rounded-xl">
+              Go to Home
+            </Button>
+          </div>
         </div>
       </div>
     </div>

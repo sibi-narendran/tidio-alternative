@@ -11,9 +11,10 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [mode, setMode] = useState<'signup' | 'login'>('signup');
+  const [mode] = useState<'signup' | 'login'>('signup');
   const [password, setPassword] = useState("");
   // One-click confirmation flow; no OTP state needed
+  const [resendIn, setResendIn] = useState(0);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -41,15 +42,43 @@ const Signup = () => {
     setIsLoading(true);
     try {
       if (mode === 'signup') {
+        // Prevent duplicate accounts: if we already recorded this email, redirect to login
+        try {
+          const { data: existing } = await supabase
+            .from('emails')
+            .select('id')
+            .eq('email', email)
+            .maybeSingle();
+          if (existing) {
+            alert('An account with this email already exists. Please log in.');
+            navigate('/signin');
+            return;
+          }
+        } catch (_) {
+          // If this check fails due to RLS, fall through; Supabase Auth still prevents duplicates server-side
+        }
+        // store password locally until the user confirms via email link
+        try { localStorage.setItem(`pendingPwd:${email}`, password); } catch (_) {}
         const { error } = await supabase.auth.signInWithOtp({
           email,
           options: {
             shouldCreateUser: true,
-            emailRedirectTo: window.location.origin + '/auth/callback'
+            emailRedirectTo: `${window.location.origin}/auth/callback?email=${encodeURIComponent(email)}`
           }
         });
         if (error) throw error;
         setIsSubmitted(true);
+        setResendIn(30);
+        const timer = setInterval(() => {
+          setResendIn((s) => {
+            if (s <= 1) {
+              clearInterval(timer);
+              return 0;
+            }
+            return s - 1;
+          });
+          return undefined as unknown as number;
+        }, 1000);
       } else {
         if (!password) return;
         const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -95,22 +124,14 @@ const Signup = () => {
         <div className="bg-white border border-gray-200 rounded-2xl p-12 shadow-2xl">
           <div className="mb-10">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-              Log in or Sign up
+              Sign up
             </h1>
             <p className="mt-4 text-gray-600 text-lg">
               Get better data with conversational forms, surveys, quizzes & more.
             </p>
           </div>
 
-          {/* Toggle signup/login */}
-          <div className="flex gap-2 mb-6">
-            <Button type="button" variant={mode === 'signup' ? 'default' : 'outline'} className="flex-1" onClick={() => setMode('signup')}>
-              Sign up
-            </Button>
-            <Button type="button" variant={mode === 'login' ? 'default' : 'outline'} className="flex-1" onClick={() => setMode('login')}>
-              Log in
-            </Button>
-          </div>
+          {/* Pure signup page */}
 
           <form onSubmit={handleSubmit}>
             <div className="space-y-4">
@@ -123,32 +144,36 @@ const Signup = () => {
                 className="h-14 text-base rounded-xl border-2 border-gray-300 focus:border-orange-500 focus:ring-0"
                 disabled={isLoading}
               />
-              {/* Password used only for login in this flow */}
               <Input
                 type="password"
-                placeholder="Password"
+                placeholder="Create a password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required={mode === 'login'}
+                required
                 className="h-14 text-base rounded-xl border-2 border-gray-300 focus:border-orange-500 focus:ring-0"
                 disabled={isLoading}
               />
+              <div className="text-sm text-gray-600"></div>
 
               <Button
                 type="button"
                 onClick={handleAuth}
                 className="w-full h-14 text-base font-semibold rounded-xl bg-[#2f2830] text-white hover:bg-[#262027]"
-                disabled={isLoading || !email || (mode === 'login' && !password)}
+                disabled={isLoading || !email || !password || resendIn > 0}
               >
                 {isLoading ? (
                   <div className="flex items-center gap-3">
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    {mode === 'signup' ? 'Sending link...' : 'Logging in...'}
+                    {'Sending link...'}
                   </div>
                 ) : (
-                  mode === 'signup' ? 'Email me a confirmation link' : 'Log in'
+                  resendIn > 0 ? `Resend available in ${resendIn}s` : 'Email me a confirmation link'
                 )}
               </Button>
+
+              <p className="text-center text-sm text-gray-600">
+                Already have an account? <button className="underline" onClick={() => navigate('/signin')}>Log in</button>
+              </p>
             </div>
           </form>
           
