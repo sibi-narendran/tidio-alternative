@@ -11,7 +11,7 @@ const FinalCTA = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         {/* Urgency indicator */}
         <div className="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 animate-bounce">
-          ⏰ LIMITED TIME: 70% OFF
+          ⏰ 6 setup calls left this month
         </div>
         
         <h2 
@@ -20,7 +20,7 @@ const FinalCTA = () => {
           }`}
           style={{ transitionDelay: '100ms' }}
         >
-          Don't Let Your Competitors Win
+          Switch before your next Tidio bill
         </h2>
         
         <p 
@@ -29,7 +29,7 @@ const FinalCTA = () => {
           }`}
           style={{ transitionDelay: '150ms' }}
         >
-          Join businesses getting 3x better conversions with dooza
+          We migrate history, plug every channel, and train AI that acts. No seat fees or surprise bills.
         </p>
         
         <div 
@@ -38,17 +38,26 @@ const FinalCTA = () => {
           }`}
           style={{ transitionDelay: '200ms' }}
         >
-          <Button 
-            variant="default" 
-            size="lg" 
-            className="bg-white text-orange-600 hover:bg-gray-50 px-10 py-4 text-xl font-black transition-all duration-300 hover:scale-105 shadow-2xl border-0 mb-4"
-            onClick={() => navigate('/signup')}
-          >
-            START FREE TRIAL NOW →
-          </Button>
-          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="bg-white text-orange-600 hover:bg-gray-50 px-10 py-4 text-xl font-black transition-all duration-300 hover:scale-105 shadow-2xl border-0"
+              onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")}
+            >
+              Book setup call →
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-bold rounded-full transition-all duration-300"
+              onClick={() => navigate("/signup")}
+            >
+              Try for free
+            </Button>
+          </div>
           <p className="text-orange-100 text-sm">
-            ✅ Setup in 2 minutes • ✅ No credit card required • ✅ 30-day guarantee
+            Live in one call • Unlimited human seats • Flat AI pricing
           </p>
         </div>
       </div>

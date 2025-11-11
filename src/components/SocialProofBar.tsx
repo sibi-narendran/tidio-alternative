@@ -5,16 +5,16 @@ const SocialProofBar = () => {
 
   const testimonials = [
     {
-      quote: "Cut our form + Zapier spend by 70%",
-      source: "Interio Square"
+      quote: "Cut Tidio spend 58%. 42% of chats now close without a human.",
+      source: "Mercury Audio"
     },
     {
-      quote: "Launch-day spikes without surprise bills",
-      source: "Suresh Timbers"
+      quote: "Shopify orders sync and AI tags warranty chats before the team jumps in.",
+      source: "Axle Supply"
     },
     {
-      quote: "Imported in minutes, shipped same day",
-      source: "Adam Labs"
+      quote: "WhatsApp and Messenger were live by the end of the call—no seat fees, no surprises.",
+      source: "Quince Home"
     }
   ];
 
@@ -24,7 +24,7 @@ const SocialProofBar = () => {
         {/* Social proof header */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">
-            Join Businesses Getting Better Results
+            Teams winning after leaving Tidio
           </h2>
         </div>
         

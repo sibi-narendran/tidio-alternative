@@ -70,29 +70,29 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-3 flex-1 justify-end">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
-              onClick={() => window.open('https://cal.com/sibinarendran/demo', '_blank')}
+            <Button
+              variant="default"
+              size="sm"
+              className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg bg-orange-500 hover:bg-orange-600 text-white"
+              onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")}
             >
-              Book a Call
+              Book setup call
             </Button>
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="outline"
+              size="sm"
               className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
-              onClick={() => navigate('/signin')}
+              onClick={() => navigate("/signup")}
+            >
+              Try for free
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
+              onClick={() => navigate("/signin")}
             >
               Sign in
-            </Button>
-            <Button 
-              variant="default" 
-              size="sm" 
-              className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
-              onClick={() => navigate('/signup')}
-            >
-              Start Free Trial
             </Button>
           </div>
         </nav>

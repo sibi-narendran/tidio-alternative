@@ -8,10 +8,7 @@ import Signup from "./pages/Signup";
 import AuthCallback from "./pages/AuthCallback";
 import Signin from "./pages/Signin";
 import ResetPassword from "./pages/ResetPassword";
-import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
-import Dashboard from "./pages/Dashboard";
-import AccountSettings from "./pages/AccountSettings";
 
 const BannerWrapper = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -21,7 +18,9 @@ const BannerWrapper = ({ children }: { children: React.ReactNode }) => {
       {showBanner && (
         <div className="fixed top-0 left-0 right-0 z-[60] bg-orange-500 text-white py-3 text-center">
           <div className="container mx-auto px-6">
-            <p className="text-sm md:text-base font-semibold">🎯 Save 70% vs Typeform</p>
+            <p className="text-sm md:text-base font-semibold">
+              🚀 Switch from Tidio in one founder call. AI agents cost half.
+            </p>
           </div>
         </div>
       )}
@@ -43,9 +42,6 @@ const App = () => (
           <Route path="/signin" element={<Signin />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/settings" element={<AccountSettings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

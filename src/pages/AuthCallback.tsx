@@ -35,17 +35,17 @@ const AuthCallback = () => {
       <div className="w-full max-w-lg">
         <div className="bg-white border border-gray-200 rounded-2xl p-12 text-center shadow-2xl">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            You’re in!
+            Chatwoot sandbox unlocked
           </h2>
           <p className="text-lg text-gray-600 mb-10">
-            Your email has been confirmed. Welcome to dooza forms.
+            Email confirmed. Sandbox access and setup details land within 24 hours.
           </p>
           <div className="flex gap-3">
-            <Button onClick={() => navigate('/dashboard')} className="w-full h-12 rounded-xl">
-              Go to Dashboard
+            <Button onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")} className="w-full h-12 rounded-xl bg-orange-500 hover:bg-orange-600">
+              Book setup call
             </Button>
             <Button onClick={() => navigate('/')} variant="outline" className="w-full h-12 rounded-xl">
-              Go to Home
+              Back to Home
             </Button>
           </div>
         </div>

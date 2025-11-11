@@ -1,23 +1,39 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { SiShopify, SiSlack, SiStripe, SiMailchimp, SiWoocommerce, SiBigcommerce, SiMagento, SiPaypal, SiMeta, SiAmazon, SiDiscord } from "react-icons/si";
-import { FaHeadset, FaCreditCard, FaEnvelope, FaInbox, FaUsers } from "react-icons/fa";
+import {
+  SiShopify,
+  SiWoocommerce,
+  SiBigcommerce,
+  SiMagento,
+  SiAmazon,
+  SiWhatsapp,
+  SiMessenger,
+  SiInstagram,
+  SiSlack,
+  SiTelegram,
+} from "react-icons/si";
+import { FaEnvelope, FaComments, FaSms, FaUsers } from "react-icons/fa";
 
 const IntegrationsSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   const integrations = [
-    { name: "Google Sheets", icon: <FaEnvelope className="w-5 h-5" />, color: "text-green-600" },
-    { name: "Notion", icon: <FaInbox className="w-5 h-5" />, color: "text-gray-700" },
-    { name: "Airtable", icon: <FaInbox className="w-5 h-5" />, color: "text-orange-600" },
-    { name: "Slack", icon: <SiSlack className="w-5 h-5" />, color: "text-purple-600" },
-    { name: "Gmail", icon: <FaEnvelope className="w-5 h-5" />, color: "text-red-600" },
-    { name: "HubSpot", icon: <FaEnvelope className="w-5 h-5" />, color: "text-orange-600" },
-    { name: "Trello", icon: <FaUsers className="w-5 h-5" />, color: "text-blue-600" },
-    { name: "Asana", icon: <FaUsers className="w-5 h-5" />, color: "text-red-600" },
-    { name: "Google Drive", icon: <FaInbox className="w-5 h-5" />, color: "text-blue-600" },
-    { name: "Pipedrive", icon: <FaHeadset className="w-5 h-5" />, color: "text-green-600" },
-    { name: "Mailchimp", icon: <SiMailchimp className="w-5 h-5" />, color: "text-yellow-600" },
-    { name: "API + Webhooks", icon: <FaHeadset className="w-5 h-5" />, color: "text-indigo-600" },
+    // E-commerce first
+    { name: "Shopify Orders", icon: <SiShopify className="w-5 h-5" />, color: "text-green-600" },
+    { name: "WooCommerce", icon: <SiWoocommerce className="w-5 h-5" />, color: "text-purple-600" },
+    { name: "BigCommerce", icon: <SiBigcommerce className="w-5 h-5" />, color: "text-blue-600" },
+    { name: "Magento", icon: <SiMagento className="w-5 h-5" />, color: "text-orange-600" },
+    { name: "Amazon Seller", icon: <SiAmazon className="w-5 h-5" />, color: "text-amber-600" },
+    // Core channels
+    { name: "WhatsApp", icon: <SiWhatsapp className="w-5 h-5" />, color: "text-green-500" },
+    { name: "Messenger", icon: <SiMessenger className="w-5 h-5" />, color: "text-blue-500" },
+    { name: "Instagram DMs", icon: <SiInstagram className="w-5 h-5" />, color: "text-pink-500" },
+    { name: "Email Inbox", icon: <FaEnvelope className="w-5 h-5" />, color: "text-red-500" },
+    { name: "Live chat widget", icon: <FaComments className="w-5 h-5" />, color: "text-gray-700" },
+    // Internal tooling
+    { name: "Slack Alerts", icon: <SiSlack className="w-5 h-5" />, color: "text-purple-600" },
+    { name: "Microsoft Teams", icon: <FaUsers className="w-5 h-5" />, color: "text-indigo-600" },
+    { name: "Telegram", icon: <SiTelegram className="w-5 h-5" />, color: "text-sky-500" },
+    { name: "SMS", icon: <FaSms className="w-5 h-5" />, color: "text-lime-600" },
   ];
 
   // Duplicate the array for seamless loop
@@ -31,7 +47,7 @@ const IntegrationsSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          Integrations
+          Channels and playbooks we wire up for you
         </h2>
         
         <div 

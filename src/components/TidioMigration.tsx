@@ -15,15 +15,15 @@ const TidioMigration = () => {
           >
             {/* Urgency badge */}
             <div className="inline-block bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6">
-              🚀 90-Minute Founder Setup
+              🚀 90-minute setup
             </div>
             
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">
-              Move every Tidio workflow to Chatwoot
+              Migrate from Tidio fast
             </h2>
             
             <p className="text-lg text-gray-700 font-semibold mb-8 max-w-2xl mx-auto">
-              We migrate conversation history, recreate workflows, and wire up WhatsApp, Messenger, Instagram, email, and your live chat widget—no downtime, no rebuild.
+              We move your history, rebuild workflows, and connect WhatsApp, Messenger, Instagram, email, and live chat with zero downtime.
             </p>
             
             <Button 
@@ -32,7 +32,7 @@ const TidioMigration = () => {
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-black shadow-lg border-0"
               onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")}
             >
-              Book your migration call →
+              Book migration call →
             </Button>
           </div>
         </div>

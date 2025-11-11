@@ -17,7 +17,7 @@ const Signin = () => {
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      navigate('/dashboard');
+      navigate('/');
     } catch (err: any) {
       alert(err?.message || 'Login failed');
     } finally {
@@ -47,19 +47,21 @@ const Signin = () => {
         <div className="bg-white border border-gray-200 rounded-2xl p-12 shadow-2xl">
           <div className="mb-10">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">Log in</h1>
-            <p className="mt-4 text-gray-600 text-lg">Welcome back to dooza forms.</p>
+            <p className="mt-4 text-gray-600 text-lg">
+              Jump back into your Chatwoot sandbox and transcripts.
+            </p>
           </div>
 
           <div className="space-y-4">
             <Input type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} className="h-14 text-base rounded-xl border-2 border-gray-300 focus:border-orange-500 focus:ring-0" />
             <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="h-14 text-base rounded-xl border-2 border-gray-300 focus:border-orange-500 focus:ring-0" />
 
-            <Button type="button" onClick={handleLogin} className="w-full h-14 text-base font-semibold rounded-xl bg-[#2f2830] text-white hover:bg-[#262027]" disabled={isLoading || !email || !password}>
+            <Button type="button" onClick={handleLogin} className="w-full h-14 text-base font-semibold rounded-xl bg-orange-500 text-white hover:bg-orange-600" disabled={isLoading || !email || !password}>
               {isLoading ? 'Logging in…' : 'Log in'}
             </Button>
 
             <Button type="button" variant="outline" onClick={handleForgot} className="w-full h-12 rounded-xl" disabled={isLoading || !email}>
-              {resetSent ? 'Reset link sent' : 'Forgot password? Email me a reset link'}
+              {resetSent ? 'Link sent' : 'Send reset link'}
             </Button>
 
             <p className="text-center text-sm text-gray-600">

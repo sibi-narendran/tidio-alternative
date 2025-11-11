@@ -1,5 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Link, Rocket, Zap } from "lucide-react";
+import { PhoneCall, Database, Sparkles } from "lucide-react";
 
 const HowItWorks = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
@@ -7,21 +7,21 @@ const HowItWorks = () => {
   const steps = [
     {
       number: "1",
-      icon: <Link className="w-6 h-6" />,
-      title: "Create with AI",
-      description: "Easily create forms by prompting our AI builder"
+      icon: <PhoneCall className="w-6 h-6" />,
+      title: "Book a founder call",
+      description: "Share how you support customers and what you want AI to handle."
     },
     {
       number: "2",
-      icon: <Rocket className="w-6 h-6" />,
-      title: "Publish",
-      description: "Get higher conversions with fast-loading forms"
+      icon: <Database className="w-6 h-6" />,
+      title: "Migrate & connect",
+      description: "We move your Tidio data, wire up Chatwoot, and connect every channel."
     },
     {
       number: "3",
-      icon: <Zap className="w-6 h-6" />,
-      title: "Automate",
-      description: "Push results to automations with our integrations"
+      icon: <Sparkles className="w-6 h-6" />,
+      title: "Launch trained AI",
+      description: "Agents tag, route, update orders, and escalate from day one."
     }
   ];
 
@@ -34,10 +34,10 @@ const HowItWorks = () => {
           }`}
         >
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-            Get Started in 3 Simple Steps
+            Tidio to Chatwoot in 3 steps
           </h2>
           <p className="text-lg text-gray-700 font-semibold">
-            From zero to converting forms in under 5 minutes
+            Your inbox goes live before the call ends.
           </p>
         </div>
         

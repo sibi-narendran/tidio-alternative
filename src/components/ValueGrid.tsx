@@ -1,5 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Bot, Infinity, Link, Zap, Upload, Webhook } from "lucide-react";
+import { Bot, BadgeDollarSign, Users, Server, ClipboardList, Headset } from "lucide-react";
 
 const ValueGrid = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
@@ -7,33 +7,33 @@ const ValueGrid = () => {
   const features = [
     {
       icon: <Bot className="w-6 h-6" />,
-      title: "AI Builder",
-      description: "Generate a form from a prompt or URL"
+      title: "AI agents that act",
+      description: "Agents tag chats, update orders, assign teammates, and escalate."
     },
     {
-      icon: <Infinity className="w-6 h-6" />,
-      title: "Unlimited Responses",
-      description: "No overages, no auto-upgrades"
+      icon: <BadgeDollarSign className="w-6 h-6" />,
+      title: "Predictable AI pricing",
+      description: "One flat fee per active AI agent. No seat charges, no overages."
     },
     {
-      icon: <Link className="w-6 h-6" />,
-      title: "Native Integrations",
-      description: "Sheets, Notion, Airtable, Slack, Gmail, HubSpot, Trello, Asana, Drive, Pipedrive, Mailchimp"
+      icon: <Users className="w-6 h-6" />,
+      title: "Unlimited human seats",
+      description: "Invite every human for free—only AI agents count."
     },
     {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Fast Embeds",
-      description: "Lightweight loader; sub-2s first question"
+      icon: <Server className="w-6 h-6" />,
+      title: "Runs on your infrastructure",
+      description: "Run Chatwoot in your cloud or ours and keep full control."
     },
     {
-      icon: <Upload className="w-6 h-6" />,
-      title: "Big Uploads",
-      description: "Up to 2 GB per file, direct-to-cloud"
+      icon: <ClipboardList className="w-6 h-6" />,
+      title: "Actionable playbooks",
+      description: "Trigger macros, create tickets, post to Slack, and sync CRM updates."
     },
     {
-      icon: <Webhook className="w-6 h-6" />,
-      title: "Reliable Webhooks",
-      description: "Retries, idempotency keys, replay"
+      icon: <Headset className="w-6 h-6" />,
+      title: "Founder-led success",
+      description: "Direct founder access for tweaks, new channels, and quality checks."
     }
   ];
 
@@ -42,10 +42,10 @@ const ValueGrid = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-            Why Businesses Choose dooza
+            Why teams leave Tidio
           </h2>
           <p className="text-xl text-gray-700 font-semibold">
-            Everything you need to crush your conversion goals
+            AI that handles customer work without surprise invoices or seat limits.
           </p>
         </div>
         

@@ -98,20 +98,32 @@ const Signup = () => {
         <div className="w-full max-w-lg">
           <div className="bg-white border border-gray-200 rounded-2xl p-12 text-center shadow-2xl">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Welcome!
+              Check your inbox
             </h2>
             
-            <p className="text-lg text-gray-600 mb-10">
-              Check your email to get started
+            <p className="text-lg text-gray-600 mb-6">
+              We sent a magic link to launch your Chatwoot sandbox. Use it for the setup call too.
+            </p>
+            <p className="text-sm text-gray-500 mb-10">
+              Didn’t see it? Search for <span className="font-semibold">support@dooza.ai</span> or book a call now.
             </p>
             
-            <Button 
-              onClick={() => navigate('/')} 
-              variant="outline" 
-              className="w-full py-3 rounded-full border-2 border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-600 hover:bg-orange-50 transition-all duration-300"
-            >
-              Back to Home
-            </Button>
+            <div className="flex flex-col gap-3">
+              <Button 
+                onClick={() => navigate('/')} 
+                variant="outline" 
+                className="w-full py-3 rounded-full border-2 border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-600 hover:bg-orange-50 transition-all duration-300"
+              >
+                Back to home
+              </Button>
+              <Button
+                onClick={() => window.open('https://cal.com/sibinarendran/demo', '_blank')}
+                variant="default"
+                className="w-full py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-all duration-300"
+              >
+                Book setup call
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -124,11 +136,25 @@ const Signup = () => {
         <div className="bg-white border border-gray-200 rounded-2xl p-12 shadow-2xl">
           <div className="mb-10">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-              Sign up
+              Try the Chatwoot Tidio replacement
             </h1>
             <p className="mt-4 text-gray-600 text-lg">
-              Get better data with conversational forms, surveys, quizzes & more.
+              Grab a sandbox inbox with one AI agent, migration help, and weekly QA. No card needed.
             </p>
+            <div className="mt-6 grid gap-2 text-sm text-gray-600">
+              <div className="flex items-start gap-2">
+                <span className="text-orange-500 mt-1">•</span>
+                <span>Unlimited human seats. Only AI agents are billed when you go live.</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-orange-500 mt-1">•</span>
+                <span>WhatsApp, Messenger, Instagram, email, and chat come prewired.</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-orange-500 mt-1">•</span>
+                <span>Transcripts and Shopify order actions are included.</span>
+              </div>
+            </div>
           </div>
 
           {/* Pure signup page */}
@@ -158,7 +184,7 @@ const Signup = () => {
               <Button
                 type="button"
                 onClick={handleAuth}
-                className="w-full h-14 text-base font-semibold rounded-xl bg-[#2f2830] text-white hover:bg-[#262027]"
+                className="w-full h-14 text-base font-semibold rounded-xl bg-orange-500 text-white hover:bg-orange-600"
                 disabled={isLoading || !email || !password || resendIn > 0}
               >
                 {isLoading ? (
@@ -167,7 +193,7 @@ const Signup = () => {
                     {'Sending link...'}
                   </div>
                 ) : (
-                  resendIn > 0 ? `Resend available in ${resendIn}s` : 'Email me a confirmation link'
+                  resendIn > 0 ? `Resend available in ${resendIn}s` : 'Email me sandbox access'
                 )}
               </Button>
 
