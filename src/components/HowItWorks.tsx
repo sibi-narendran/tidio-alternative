@@ -34,7 +34,7 @@ const HowItWorks = () => {
           }`}
         >
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-            Tidio to Chatwoot in 3 steps
+            Switch from Tidio in 3 steps
           </h2>
           <p className="text-lg text-gray-700 font-semibold">
             Your inbox goes live before the call ends.

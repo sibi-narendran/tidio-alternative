@@ -29,7 +29,7 @@ const FinalCTA = () => {
           }`}
           style={{ transitionDelay: '150ms' }}
         >
-          We migrate history, plug every channel, and train AI that acts. No seat fees or surprise bills.
+          We migrate your history, connect every channel, and train AI that acts. No seat fees or surprise bills.
         </p>
         
         <div 
@@ -45,12 +45,12 @@ const FinalCTA = () => {
               className="bg-white text-orange-600 hover:bg-gray-50 px-10 py-4 text-xl font-black transition-all duration-300 hover:scale-105 shadow-2xl border-0"
               onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")}
             >
-              Book setup call →
+              book a free setup call →
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-bold rounded-full transition-all duration-300"
+              className="border-white text-white bg-transparent hover:bg-white/10 px-8 py-4 text-lg font-bold rounded-full transition-all duration-300 ease-in-out"
               onClick={() => navigate("/signup")}
             >
               Try for free

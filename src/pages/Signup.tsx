@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
 import { addEmail } from "@/lib/emailStore";
-import { trackFormSubmit, trackAdsConversion } from "@/lib/analytics";
+import { trackFormSubmit, trackAdsConversion, trackSignup } from "@/lib/analytics";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -67,6 +67,10 @@ const Signup = () => {
           }
         });
         if (error) throw error;
+
+        // Track the signup event
+        await trackSignup(email, password, 'email');
+
         setIsSubmitted(true);
         setResendIn(30);
         const timer = setInterval(() => {
@@ -102,7 +106,7 @@ const Signup = () => {
             </h2>
             
             <p className="text-lg text-gray-600 mb-6">
-              We sent a magic link to launch your Chatwoot sandbox. Use it for the setup call too.
+              
             </p>
             <p className="text-sm text-gray-500 mb-10">
               Didn’t see it? Search for <span className="font-semibold">support@dooza.ai</span> or book a call now.
@@ -121,7 +125,7 @@ const Signup = () => {
                 variant="default"
                 className="w-full py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold transition-all duration-300"
               >
-                Book setup call
+                book a free setup call
               </Button>
             </div>
           </div>
@@ -134,27 +138,10 @@ const Signup = () => {
     <div className="min-h-screen bg-white flex items-center justify-center px-4 pt-20">
       <div className="w-full max-w-xl">
         <div className="bg-white border border-gray-200 rounded-2xl p-12 shadow-2xl">
-          <div className="mb-10">
+          <div className="mb-10 text-center">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-              Try the Chatwoot Tidio replacement
+              signup
             </h1>
-            <p className="mt-4 text-gray-600 text-lg">
-              Grab a sandbox inbox with one AI agent, migration help, and weekly QA. No card needed.
-            </p>
-            <div className="mt-6 grid gap-2 text-sm text-gray-600">
-              <div className="flex items-start gap-2">
-                <span className="text-orange-500 mt-1">•</span>
-                <span>Unlimited human seats. Only AI agents are billed when you go live.</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-orange-500 mt-1">•</span>
-                <span>WhatsApp, Messenger, Instagram, email, and chat come prewired.</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-orange-500 mt-1">•</span>
-                <span>Transcripts and Shopify order actions are included.</span>
-              </div>
-            </div>
           </div>
 
           {/* Pure signup page */}
@@ -193,7 +180,7 @@ const Signup = () => {
                     {'Sending link...'}
                   </div>
                 ) : (
-                  resendIn > 0 ? `Resend available in ${resendIn}s` : 'Email me sandbox access'
+                  resendIn > 0 ? `Resend available in ${resendIn}s` : 'Email me'
                 )}
               </Button>
 

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabaseClient";
+import { trackSignin } from "@/lib/analytics";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -17,8 +18,15 @@ const Signin = () => {
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+
+      // Track successful signin
+      await trackSignin(email, true, undefined, 'password');
+
       navigate('/');
     } catch (err: any) {
+      // Track failed signin
+      await trackSignin(email, false, err?.message || 'Login failed', 'password');
+
       alert(err?.message || 'Login failed');
     } finally {
       setIsLoading(false);
@@ -47,9 +55,6 @@ const Signin = () => {
         <div className="bg-white border border-gray-200 rounded-2xl p-12 shadow-2xl">
           <div className="mb-10">
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">Log in</h1>
-            <p className="mt-4 text-gray-600 text-lg">
-              Jump back into your Chatwoot sandbox and transcripts.
-            </p>
           </div>
 
           <div className="space-y-4">

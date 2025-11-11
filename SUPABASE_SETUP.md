@@ -14,7 +14,7 @@
 In Supabase SQL Editor, run this query:
 
 ```sql
--- Create emails table for dooza signups
+-- Create emails table for dooza signups (legacy)
 CREATE TABLE public.emails (
   id BIGSERIAL PRIMARY KEY,
   email VARCHAR(255) NOT NULL,
@@ -24,16 +24,49 @@ CREATE TABLE public.emails (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Create signups table for detailed signup tracking
+CREATE TABLE public.signups (
+  id BIGSERIAL PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  password_hash TEXT,
+  ip_address VARCHAR(45),
+  user_agent TEXT,
+  referrer TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  signup_method VARCHAR(50) DEFAULT 'email', -- 'email', 'google', 'github', etc.
+  is_verified BOOLEAN DEFAULT FALSE
+);
+
+-- Create signins table for login tracking
+CREATE TABLE public.signins (
+  id BIGSERIAL PRIMARY KEY,
+  email VARCHAR(255),
+  ip_address VARCHAR(45),
+  user_agent TEXT,
+  success BOOLEAN DEFAULT FALSE,
+  error_message TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  signin_method VARCHAR(50) DEFAULT 'password' -- 'password', 'magic_link', etc.
+);
+
 -- Add indexes for better performance
 CREATE INDEX idx_emails_timestamp ON public.emails(timestamp DESC);
 CREATE INDEX idx_emails_email ON public.emails(email);
+CREATE INDEX idx_signups_email ON public.signups(email);
+CREATE INDEX idx_signups_created_at ON public.signups(created_at DESC);
+CREATE INDEX idx_signins_email ON public.signins(email);
+CREATE INDEX idx_signins_created_at ON public.signins(created_at DESC);
+CREATE INDEX idx_signins_success ON public.signins(success);
 
 -- Enable Row Level Security (RLS) for security
 ALTER TABLE public.emails ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.signups ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.signins ENABLE ROW LEVEL SECURITY;
 
--- Create policy to allow API access (adjust for production security)
-CREATE POLICY "Allow API access" ON public.emails
-  FOR ALL USING (true);
+-- Create policies to allow API access (adjust for production security)
+CREATE POLICY "Allow API access" ON public.emails FOR ALL USING (true);
+CREATE POLICY "Allow API access" ON public.signups FOR ALL USING (true);
+CREATE POLICY "Allow API access" ON public.signins FOR ALL USING (true);
 ```
 
 ### **Step 3: Get API Credentials**
@@ -86,7 +119,7 @@ git push
 
 ## 📈 **Database Schema Details**
 
-### **emails table**
+### **emails table (Legacy)**
 | Column | Type | Description |
 |--------|------|-------------|
 | `id` | BIGSERIAL | Auto-incrementing primary key |
@@ -96,9 +129,39 @@ git push
 | `user_agent` | TEXT | Browser/device information |
 | `created_at` | TIMESTAMPTZ | Database insertion time |
 
+### **signups table**
+| Column | Type | Description |
+|--------|------|-------------|
+| `id` | BIGSERIAL | Auto-incrementing primary key |
+| `email` | VARCHAR(255) | User email address |
+| `password_hash` | TEXT | Hashed password (if applicable) |
+| `ip_address` | VARCHAR(45) | User's IP address |
+| `user_agent` | TEXT | Browser/device information |
+| `referrer` | TEXT | Referral source URL |
+| `created_at` | TIMESTAMPTZ | Signup timestamp |
+| `signup_method` | VARCHAR(50) | Method used ('email', 'google', etc.) |
+| `is_verified` | BOOLEAN | Whether email is verified |
+
+### **signins table**
+| Column | Type | Description |
+|--------|------|-------------|
+| `id` | BIGSERIAL | Auto-incrementing primary key |
+| `email` | VARCHAR(255) | User email (if available) |
+| `ip_address` | VARCHAR(45) | User's IP address |
+| `user_agent` | TEXT | Browser/device information |
+| `success` | BOOLEAN | Whether login was successful |
+| `error_message` | TEXT | Error message if login failed |
+| `created_at` | TIMESTAMPTZ | Login attempt timestamp |
+| `signin_method` | VARCHAR(50) | Method used ('password', 'magic_link', etc.) |
+
 ### **Indexes for Performance**
 - **`idx_emails_timestamp`** - Fast sorting by submission time
 - **`idx_emails_email`** - Quick email lookups
+- **`idx_signups_email`** - Quick signup email lookups
+- **`idx_signups_created_at`** - Fast signup sorting by time
+- **`idx_signins_email`** - Quick signin email lookups
+- **`idx_signins_created_at`** - Fast signin sorting by time
+- **`idx_signins_success`** - Fast filtering by success/failure
 - **Primary Key Index** - Fast ID-based queries (automatic)
 
 ---

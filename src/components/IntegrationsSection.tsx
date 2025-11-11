@@ -47,7 +47,7 @@ const IntegrationsSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          Channels and playbooks we wire up for you
+          Channels we connect
         </h2>
         
         <div 

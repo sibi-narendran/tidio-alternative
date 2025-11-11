@@ -23,7 +23,7 @@ const TidioMigration = () => {
             </h2>
             
             <p className="text-lg text-gray-700 font-semibold mb-8 max-w-2xl mx-auto">
-              We move your history, rebuild workflows, and connect WhatsApp, Messenger, Instagram, email, and live chat with zero downtime.
+              We migrate your history, rebuild workflows, and connect all channels with zero downtime.
             </p>
             
             <Button 

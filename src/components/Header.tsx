@@ -76,7 +76,7 @@ const Header = () => {
               className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg bg-orange-500 hover:bg-orange-600 text-white"
               onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")}
             >
-              Book setup call
+              book a free setup call
             </Button>
             <Button
               variant="outline"

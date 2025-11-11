@@ -7,13 +7,13 @@ const Hero = () => {
       <div className="container mx-auto px-6 py-24 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-black mb-6 animate-fade-up leading-tight text-gray-900">
-            Switch from Tidio in 90 minutes
+            Move to Dooza <span className="text-orange-500">Desk</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 font-semibold mb-6 animate-fade-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
-            We set up Chatwoot, move every chat, and launch AI agents that cost half as much.
+            AI which takes action, costs less, at free human seats.
           </p>
           <p className="text-base md:text-lg text-gray-600 mb-10 animate-fade-up [animation-delay:150ms] opacity-0 [animation-fill-mode:forwards]">
-            Flat pricing per AI agent. No seat fees. No surprise bills. Just agents that reply and act.
+            Flat pricing per AI agent. No seat fees or surprise bills. Just agents that reply and act.
           </p>
           <div className="animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards] flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -31,7 +31,7 @@ const Hero = () => {
                 window.open("https://cal.com/sibinarendran/demo", "_blank");
               }}
             >
-              Book setup call →
+              book a free setup call →
             </Button>
             <Button 
               variant="outline" 

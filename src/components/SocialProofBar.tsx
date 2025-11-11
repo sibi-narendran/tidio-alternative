@@ -6,15 +6,15 @@ const SocialProofBar = () => {
   const testimonials = [
     {
       quote: "Cut Tidio spend 58%. 42% of chats now close without a human.",
-      source: "Mercury Audio"
+      source: "sibinarendran"
     },
     {
       quote: "Shopify orders sync and AI tags warranty chats before the team jumps in.",
-      source: "Axle Supply"
+      source: "suresh timbers"
     },
     {
       quote: "WhatsApp and Messenger were live by the end of the call—no seat fees, no surprises.",
-      source: "Quince Home"
+      source: "interio square"
     }
   ];
 

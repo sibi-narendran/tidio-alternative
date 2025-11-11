@@ -38,11 +38,11 @@ const AuthCallback = () => {
             Chatwoot sandbox unlocked
           </h2>
           <p className="text-lg text-gray-600 mb-10">
-            Email confirmed. Sandbox access and setup details land within 24 hours.
+            Email confirmed.
           </p>
           <div className="flex gap-3">
             <Button onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")} className="w-full h-12 rounded-xl bg-orange-500 hover:bg-orange-600">
-              Book setup call
+              book a free setup call
             </Button>
             <Button onClick={() => navigate('/')} variant="outline" className="w-full h-12 rounded-xl">
               Back to Home

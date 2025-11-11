@@ -8,14 +8,14 @@ const Pricing = () => {
 
   const plan = {
     name: "AI Agent License",
-    price: "$249",
+    price: "$25",
     period: "/month per active AI agent",
     description: "Replace Tidio with action-ready Chatwoot AI.",
     features: [
       "Founder-led 90-minute migration",
-      "Unlimited human seats. No seat fees.",
+      "Unlimited human seats, no seat fees",
       "WhatsApp, Messenger, Instagram, email, live chat included",
-      "AI updates Shopify, WooCommerce, BigCommerce, Magento, Amazon orders",
+      "AI updates Shopify, WooCommerce, BigCommerce, Magento, and Amazon orders",
       "Slack, Teams, Telegram, and SMS alerts baked in",
       "Host in your cloud or ours with full control",
       "Playbooks that tag, assign, escalate, and fire webhooks",
@@ -74,7 +74,7 @@ const Pricing = () => {
                   className="w-full rounded-full py-4 text-lg font-semibold bg-orange-500 hover:bg-orange-600 text-white shadow-xl hover:shadow-2xl"
                   onClick={() => window.open("https://cal.com/sibinarendran/demo", "_blank")}
                 >
-                  Book setup call
+                  book a free setup call
                 </Button>
                 <Button
                   variant="outline"
