@@ -1,7 +1,11 @@
-import React from 'react';
-import { Check, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Plus, Minus } from 'lucide-react';
 
 const Pricing = () => {
+    const [aiAgents, setAiAgents] = useState(1);
+    const pricePerAgent = 18;
+    const resolutionsPerAgent = 100;
+
     return (
         <div id="pricing" className="py-24 bg-slate-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,18 +52,41 @@ const Pricing = () => {
                     {/* AI Plan */}
                     <div className="bg-slate-900 rounded-3xl shadow-xl border border-slate-800 p-8 text-white">
                         <h3 className="text-2xl font-bold mb-2">For AI Agents</h3>
-                        <div className="flex items-baseline mb-6">
-                            <span className="text-5xl font-bold">Custom</span>
+                        <div className="flex items-baseline mb-2">
+                            <span className="text-5xl font-bold">${aiAgents * pricePerAgent}</span>
+                            <span className="text-slate-400 ml-2">/month</span>
                         </div>
-                        <p className="text-slate-400 mb-8">
-                            Advanced AI capabilities and automated agents to scale your support.
+                        <p className="text-primary-400 font-medium mb-6">
+                            {aiAgents * resolutionsPerAgent} Resolutions included
                         </p>
+
+                        {/* Agent Counter */}
+                        <div className="flex items-center justify-between bg-slate-800 rounded-xl p-4 mb-8 border border-slate-700">
+                            <span className="font-medium text-slate-300">AI Agents</span>
+                            <div className="flex items-center gap-4">
+                                <button
+                                    onClick={() => setAiAgents(Math.max(1, aiAgents - 1))}
+                                    className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center hover:bg-slate-600 transition-colors disabled:opacity-50"
+                                    disabled={aiAgents <= 1}
+                                >
+                                    <Minus size={16} />
+                                </button>
+                                <span className="text-xl font-bold w-8 text-center">{aiAgents}</span>
+                                <button
+                                    onClick={() => setAiAgents(aiAgents + 1)}
+                                    className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center hover:bg-primary-500 transition-colors"
+                                >
+                                    <Plus size={16} />
+                                </button>
+                            </div>
+                        </div>
+
                         <button className="w-full bg-white text-slate-900 py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors mb-8">
-                            Contact Sales
+                            Subscribe Now
                         </button>
                         <ul className="space-y-4">
                             {[
-                                'AI Agent (Captain)',
+                                'Full AI Agent (Captain)',
                                 'Automated responses',
                                 'Smart suggestions',
                                 'Content generation',
