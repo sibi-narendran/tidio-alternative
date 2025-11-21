@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Logos from './components/Logos';
-import Features from './components/Features';
 import Integrations from './components/Integrations';
 import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
@@ -16,7 +15,6 @@ function App() {
       <main>
         <Hero />
         <Logos />
-        <Features />
         <Integrations />
         <Testimonials />
         <Pricing />
