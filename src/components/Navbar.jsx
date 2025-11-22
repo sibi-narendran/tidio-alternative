@@ -55,10 +55,10 @@ const Navbar = () => {
                         <a href="#pricing" className="block px-3 py-2 text-base font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-md">Pricing</a>
                         <a href="#" className="block px-3 py-2 text-base font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-md">Resources</a>
                         <div className="pt-4 flex flex-col gap-3">
-                            <a href="#" className="block text-center text-base font-medium text-slate-600 hover:text-primary-600">Login</a>
-                            <button className="w-full bg-primary-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors">
+                            <a href="https://app.doozadesk.com/app/login" className="block text-center text-base font-medium text-slate-600 hover:text-primary-600">Login</a>
+                            <a href="https://app.doozadesk.com/app/auth/signup" className="w-full bg-primary-600 text-white px-5 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors text-center">
                                 Create free account
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
