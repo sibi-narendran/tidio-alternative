@@ -8,8 +8,23 @@ const BookingModal = ({ isOpen, onClose }) => {
         } else {
             document.body.style.overflow = 'unset';
         }
+
+        const handleCalEvent = (e) => {
+            // Check for Cal.com booking successful event
+            // Cal.com emits various events, we look for successful booking
+            if (e.data.type === 'cal:bookingSuccessful' || e.data.type === 'bookingSuccessful') {
+                if (window.gtag) {
+                    window.gtag('event', 'conversion', { 'send_to': 'AW-10872232955' });
+                    console.log('Conversion tracked: Booking Successful');
+                }
+            }
+        };
+
+        window.addEventListener('message', handleCalEvent);
+
         return () => {
             document.body.style.overflow = 'unset';
+            window.removeEventListener('message', handleCalEvent);
         };
     }, [isOpen]);
 
