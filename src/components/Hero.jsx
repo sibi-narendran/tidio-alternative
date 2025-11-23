@@ -18,13 +18,12 @@ const Hero = ({ openModal }) => {
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-[1.1]">
-                    The modern customer support <br className="hidden md:block" />
-                    tool for your business
+                    Customer Support? <br className="hidden md:block" />
+                    <span className="text-primary-600">Dooza Does It.</span>
                 </h1>
 
-                <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed font-normal">
-                    Doozadesk gives you all the tools you need to communicate with your customers.
-                    Omnichannel support and AI assistance.
+                <p className="text-xl md:text-3xl text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed font-normal">
+                    Pay only for AI, not for human seats.
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
@@ -51,6 +50,10 @@ const Hero = ({ openModal }) => {
                     <div className="flex items-center gap-2">
                         <CheckCircle2 size={18} className="text-primary-500" />
                         <span>14-day free trial</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 size={18} className="text-primary-500" />
+                        <span>Pay only for AI agents</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <CheckCircle2 size={18} className="text-primary-500" />

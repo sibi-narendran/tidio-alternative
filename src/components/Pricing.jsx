@@ -12,7 +12,7 @@ const Pricing = ({ openModal }) => {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
                     <p className="text-xl text-slate-600">
-                        We believe in empowering humans. That's why Doozadesk is free for human agents.
+                        Pay only for AI, not for human seats. Doozadesk is free for human agents forever.
                     </p>
                 </div>
 
