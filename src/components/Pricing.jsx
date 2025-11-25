@@ -3,7 +3,7 @@ import { Check, Plus, Minus } from 'lucide-react';
 
 const Pricing = ({ openModal }) => {
     const [aiAgents, setAiAgents] = useState(1);
-    const pricePerAgent = 18;
+    const pricePerAgent = 5;
     const resolutionsPerAgent = 100;
 
     return (
