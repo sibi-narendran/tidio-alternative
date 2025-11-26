@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, MessageCircle } from 'lucide-react';
 
 const Navbar = ({ openModal }) => {
@@ -17,13 +18,13 @@ const Navbar = ({ openModal }) => {
         <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
-                    <div className="flex-shrink-0 flex items-center gap-2">
+                    <Link to="/" className="flex-shrink-0 flex items-center gap-2">
                         {/* Logo Placeholder - Chatwoot uses a specific icon, we'll use a text logo for now but styled similarly */}
                         <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white">
                             <MessageCircle size={20} strokeWidth={2.5} />
                         </div>
                         <span className="text-xl font-bold text-slate-900 tracking-tight">Doozadesk</span>
-                    </div>
+                    </Link>
 
                     <div className="hidden md:flex items-center space-x-8">
                         <a href="https://app.doozadesk.com/app/login" onClick={openModal} className="text-[15px] font-medium text-slate-600 hover:text-primary-600 transition-colors">Login</a>
