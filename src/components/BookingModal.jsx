@@ -39,7 +39,7 @@ const BookingModal = ({ isOpen, onClose }) => {
 
             <div className="relative w-full max-w-4xl h-[80vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
                 <div className="flex justify-between items-center p-4 border-b border-slate-100 bg-white z-10">
-                    <h3 className="text-lg font-semibold text-slate-900">Book a Demo</h3>
+                    <h3 className="text-lg font-semibold text-slate-900">Book free setup</h3>
                     <button
                         onClick={onClose}
                         className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
@@ -52,7 +52,7 @@ const BookingModal = ({ isOpen, onClose }) => {
                     <iframe
                         src="https://cal.com/sibinarendran/demo"
                         className="w-full h-full border-0"
-                        title="Book a demo"
+                        title="Book free setup"
                     ></iframe>
                 </div>
             </div>

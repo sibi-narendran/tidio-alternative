@@ -21,7 +21,7 @@ const BottomCTA = ({ openModal }) => {
                             openModal(e);
                         }}
                         className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all hover:-translate-y-1">
-                        Book a demo
+                        Book free setup
                     </a>
                 </div>
 
