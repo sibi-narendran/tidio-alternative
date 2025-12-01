@@ -19,7 +19,7 @@ const Hero = ({ openModal }) => {
                 </h1>
 
                 <p className="text-xl md:text-3xl text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed font-normal">
-                    Pay only for AI, not for human seats.
+                    free forever for humans
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
