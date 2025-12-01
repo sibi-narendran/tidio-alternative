@@ -2,14 +2,14 @@ import React from 'react';
 
 const Integrations = () => {
     const tools = [
+        { name: "Jira", icon: "https://cdn.simpleicons.org/jira" },
+        { name: "Salesforce", icon: "https://cdn.simpleicons.org/salesforce" },
         { name: "Slack", icon: "https://cdn.simpleicons.org/slack" },
-        { name: "WhatsApp", icon: "https://cdn.simpleicons.org/whatsapp" },
-        { name: "Stripe", icon: "https://cdn.simpleicons.org/stripe" },
+        { name: "Asana", icon: "https://cdn.simpleicons.org/asana" },
         { name: "Shopify", icon: "https://cdn.simpleicons.org/shopify" },
-        { name: "WordPress", icon: "https://cdn.simpleicons.org/wordpress" },
-        { name: "Dialogflow", icon: "https://cdn.simpleicons.org/dialogflow" },
-        { name: "Google Analytics", icon: "https://cdn.simpleicons.org/googleanalytics" },
-        { name: "Salesforce", icon: "https://cdn.simpleicons.org/salesforce" } // Replaced Dyte with Salesforce for better logo availability
+        { name: "HubSpot", icon: "https://cdn.simpleicons.org/hubspot" },
+        { name: "Zoom", icon: "https://cdn.simpleicons.org/zoom" },
+        { name: "Trello", icon: "https://cdn.simpleicons.org/trello" }
     ];
 
     return (

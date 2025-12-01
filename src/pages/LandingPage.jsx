@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import SwitchComparison from '../components/SwitchComparison';
+import AIOverlaySection from '../components/AIOverlaySection';
 import Logos from '../components/Logos';
 import Integrations from '../components/Integrations';
 import Testimonials from '../components/Testimonials';
@@ -72,10 +73,11 @@ function LandingPage() {
             <Navbar openModal={handleAction} />
             <main>
                 <Hero openModal={handleAction} />
-                <SwitchComparison openModal={handleAction} />
                 <Logos />
-                <Integrations />
+                <SwitchComparison openModal={handleAction} />
+                <AIOverlaySection openModal={handleAction} />
                 <Testimonials />
+                <Integrations />
                 <Pricing openModal={handleAction} />
                 <BottomCTA openModal={handleAction} />
             </main>
