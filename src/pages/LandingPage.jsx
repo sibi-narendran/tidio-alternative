@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import SwitchComparison from '../components/SwitchComparison';
 import Logos from '../components/Logos';
 import Integrations from '../components/Integrations';
 import Testimonials from '../components/Testimonials';
@@ -71,6 +72,7 @@ function LandingPage() {
             <Navbar openModal={handleAction} />
             <main>
                 <Hero openModal={handleAction} />
+                <SwitchComparison openModal={handleAction} />
                 <Logos />
                 <Integrations />
                 <Testimonials />

@@ -14,6 +14,7 @@ const BookingModal = ({ isOpen, onClose }) => {
             // Cal.com emits various events, we look for successful booking
             if (e.data.type === 'cal:bookingSuccessful' || e.data.type === 'bookingSuccessful') {
                 if (window.gtag) {
+                    // Using the same conversion label as the signup form to count as same conversion
                     window.gtag('event', 'conversion', { 'send_to': 'AW-10872232955' });
                     console.log('Conversion tracked: Booking Successful');
                 }
