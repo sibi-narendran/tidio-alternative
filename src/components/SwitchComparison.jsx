@@ -62,7 +62,7 @@ const SwitchComparison = ({ openModal }) => {
                                 <div className="p-1 bg-green-100 rounded-full text-green-600 mt-0.5">
                                     <Check className="w-4 h-4" />
                                 </div>
-                                <span>Pay only for AI, <span className="text-green-600">unlimited human seats</span></span>
+                                <span><span className="text-green-600">Seats free forever.</span> Pay only for AI.</span>
                             </li>
                             <li className="flex items-start gap-3 text-slate-700 font-medium">
                                 <div className="p-1 bg-green-100 rounded-full text-green-600 mt-0.5">

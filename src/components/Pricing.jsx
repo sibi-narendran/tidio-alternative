@@ -12,7 +12,7 @@ const Pricing = ({ openModal }) => {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
                     <p className="text-xl text-slate-600">
-                        free forever for humans Doozadesk is free for human agents forever.
+                        Unlimited seats for your team, free forever. You only pay for AI agents.
                     </p>
                 </div>
 
@@ -20,22 +20,22 @@ const Pricing = ({ openModal }) => {
                     {/* Humans Plan */}
                     <div className="bg-white rounded-3xl shadow-xl border-2 border-primary-100 p-8 relative overflow-hidden">
                         <div className="absolute top-0 right-0 bg-primary-100 text-primary-700 px-4 py-1 rounded-bl-xl font-medium text-sm">
-                            Most Popular
+                            Free Forever
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">For Humans</h3>
+                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Team Seats</h3>
                         <div className="flex items-baseline mb-6">
                             <span className="text-5xl font-bold text-slate-900">$0</span>
                             <span className="text-slate-500 ml-2">/forever</span>
                         </div>
                         <p className="text-slate-600 mb-8">
-                            Complete access to all features for human agents. No hidden fees.
+                            Invite your entire team. No per-seat pricing, no hidden fees.
                         </p>
                         <a href="https://app.doozadesk.com/app/auth/signup" onClick={openModal} className="block w-full bg-primary-600 text-white py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors mb-8 text-center">
                             Get Started for Free
                         </a>
                         <ul className="space-y-4">
                             {[
-                                'Unlimited human agents',
+                                'Unlimited team members',
                                 'Unlimited conversations',
                                 'All channels included',
                                 'Mobile apps',
