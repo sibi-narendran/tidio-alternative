@@ -32,9 +32,6 @@
     "tailwindcss": "^4.1.17",
     "vite": "^7.2.4"
   },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "*"
-  },
   "overrides": {
     "react-helmet-async": {
       "react": "$react",
