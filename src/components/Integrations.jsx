@@ -8,7 +8,7 @@ const Integrations = () => {
         { name: "Shopify", icon: "https://cdn.simpleicons.org/shopify" },
         { name: "Zendesk", icon: "https://cdn.simpleicons.org/zendesk" },
         { name: "Mail", icon: "https://cdn.simpleicons.org/gmail" },
-        { name: "Gorgias", icon: "https://cdn.simpleicons.org/gorgias" },
+        { name: "Gorgias", icon: "https://logo.clearbit.com/gorgias.com" },
         { name: "Vapi Voice AI", icon: "https://logo.clearbit.com/vapi.ai" },
         { name: "Messenger", icon: "https://cdn.simpleicons.org/messenger" },
         { name: "Websites", iconComponent: <Globe className="w-12 h-12 mb-4 opacity-75 group-hover:opacity-100 transition-opacity text-slate-500 group-hover:text-primary-600" /> }
