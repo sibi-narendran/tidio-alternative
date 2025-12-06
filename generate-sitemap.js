@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { blogPosts } from './src/data/blogData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DOMAIN = 'https://doozadesk.com';
 
-const pages = [
+const staticPages = [
   {
     url: '/',
     changefreq: 'weekly',
@@ -28,22 +29,20 @@ const pages = [
     changefreq: 'weekly',
     priority: 0.9,
   },
-  {
-    url: '/blog/gorgias-alternatives',
-    changefreq: 'monthly',
-    priority: 0.8,
-  },
-  {
-    url: '/blog/instagram-direct',
-    changefreq: 'monthly',
-    priority: 0.8,
-  },
 ];
 
 const generateSitemap = () => {
+  const blogUrls = blogPosts.map(post => ({
+    url: `/blog/${post.slug}`,
+    changefreq: 'monthly',
+    priority: 0.8
+  }));
+
+  const allPages = [...staticPages, ...blogUrls];
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
+${allPages
   .map((page) => {
     return `  <url>
     <loc>${DOMAIN}${page.url}</loc>

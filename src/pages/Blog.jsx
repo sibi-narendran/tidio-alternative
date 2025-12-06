@@ -4,35 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { ArrowRight, Clock, Calendar } from 'lucide-react';
-
-const blogPosts = [
-    {
-        id: 'gorgias-alternatives',
-        title: 'Top 5 Gorgias Alternatives in 2025',
-        excerpt: 'Discover why Dooza.co and Richpanel are the only true Shopify-native solutions, and why Dooza\'s AI-native approach is revolutionizing e-commerce customer support.',
-        author: 'Dooza Team',
-        date: 'December 6, 2025',
-        readTime: '8 min read',
-        category: 'Product Comparison',
-        tags: ['Gorgias', 'Shopify', 'AI Support', 'Help Desk'],
-        image: '/blog/images/gorgias-alternatives.jpg',
-        slug: 'gorgias-alternatives',
-        featured: true
-    },
-    {
-        id: 'instagram-direct',
-        title: 'Instagram Direct Messaging for E-commerce',
-        excerpt: 'Learn how to leverage Instagram DM for customer support and sales, with AI-powered automation that turns social conversations into revenue.',
-        author: 'Dooza Team',
-        date: 'December 5, 2025',
-        readTime: '6 min read',
-        category: 'Social Commerce',
-        tags: ['Instagram', 'DM Automation', 'Social Media'],
-        image: '/blog/images/instagram-dm.jpg',
-        slug: 'instagram-direct',
-        featured: false
-    }
-];
+import { blogPosts } from '../data/blogData';
 
 export default function Blog() {
     const [searchQuery, setSearchQuery] = useState('');
