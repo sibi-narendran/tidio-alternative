@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { CheckCircle2, Zap, Shield, Globe, MessageSquare, BarChart3 } from 'lucide-react';
 
 const FeaturesPage = () => {
@@ -39,6 +40,12 @@ const FeaturesPage = () => {
 
     return (
         <div className="min-h-screen bg-white font-sans text-slate-900">
+            <SEO 
+                title="Features | AI Customer Support Tools"
+                description="Explore Doozadesk's powerful features: Unified Inbox, AI Agents, Omnichannel Support, and Advanced Analytics. Everything you need to delight customers."
+                keywords="customer support features, helpdesk tools, AI customer service, unified inbox, support automation"
+                canonicalUrl="https://doozadesk.com/features"
+            />
             <Navbar />
             <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className="text-center mb-20">

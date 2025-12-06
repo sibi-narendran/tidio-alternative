@@ -7,6 +7,8 @@ const AuthGateway = lazy(() => import('./pages/AuthGateway'));
 const Admin = lazy(() => import('./pages/Admin'));
 const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
 const PricingPage = lazy(() => import('./pages/PricingPage'));
+const GorgiasAlternative = lazy(() => import('./pages/GorgiasAlternative'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading Fallback
 const LoadingFallback = () => (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/features" element={<FeaturesPage />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/gorgias-alternative" element={<GorgiasAlternative />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

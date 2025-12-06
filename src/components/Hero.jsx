@@ -60,7 +60,10 @@ const Hero = ({ openModal }) => {
                         <div className="bg-slate-800 rounded-xl overflow-hidden aspect-[16/9] relative">
                             <img
                                 src="/images/dashboard.webp"
-                                alt="Doozadesk Dashboard"
+                                alt="Doozadesk Unified Dashboard Interface"
+                                width="1152"
+                                height="648"
+                                loading="eager"
                                 className="w-full h-full object-cover"
                             />
                         </div>

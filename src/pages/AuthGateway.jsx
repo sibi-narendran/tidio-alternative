@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { User, Mail, Phone, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import SEO from '../components/SEO';
 
 const AuthGateway = () => {
     const [searchParams] = useSearchParams();
@@ -65,6 +66,11 @@ const AuthGateway = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+            <SEO 
+                title={title} 
+                description={subtitle}
+                noindex={true}
+            />
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="flex justify-center mb-6">
                     <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl">

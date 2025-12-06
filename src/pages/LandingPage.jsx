@@ -11,6 +11,7 @@ import Pricing from '../components/Pricing';
 import BottomCTA from '../components/BottomCTA';
 import Footer from '../components/Footer';
 import BookingModal from '../components/BookingModal';
+import SEO from '../components/SEO';
 
 function LandingPage() {
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -68,8 +69,43 @@ function LandingPage() {
         }
     }, [timeElapsed, hasScrolled, isBookingModalOpen]);
 
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Doozadesk",
+                "url": "https://doozadesk.com",
+                "logo": "https://doozadesk.com/favicon.png",
+                "sameAs": [
+                    "https://twitter.com/doozadesk",
+                    "https://linkedin.com/company/doozadesk"
+                ]
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Doozadesk",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "description": "Free for unlimited human agents"
+                }
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-white font-sans text-slate-900">
+            <SEO 
+                title="AI-Powered Customer Support Platform" 
+                description="Doozadesk is the all-in-one customer support platform with AI agents, unified inbox, and omnichannel support. Scale your support without scaling headcount."
+                keywords="customer support, AI support agents, helpdesk software, omnichannel support, customer service automation"
+                canonicalUrl="https://doozadesk.com/"
+                structuredData={structuredData}
+            />
             <Navbar openModal={handleAction} />
             <main>
                 <Hero openModal={handleAction} />

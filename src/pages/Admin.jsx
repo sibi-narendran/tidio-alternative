@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 import { Download, Search, RefreshCw } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Admin = () => {
     const [leads, setLeads] = useState([]);
@@ -56,6 +57,11 @@ const Admin = () => {
 
     return (
         <div className="min-h-screen bg-slate-50 p-8">
+            <SEO 
+                title="Admin Dashboard" 
+                description="Admin dashboard for Doozadesk leads."
+                noindex={true}
+            />
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                     <div>

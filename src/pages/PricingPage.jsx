@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Pricing from '../components/Pricing';
+import SEO from '../components/SEO';
 import { HelpCircle } from 'lucide-react';
 
 const PricingPage = () => {
@@ -36,9 +37,15 @@ const PricingPage = () => {
 
     return (
         <div className="min-h-screen bg-white font-sans text-slate-900">
+            <SEO 
+                title="Pricing | Free Unlimited Human Seats"
+                description="Simple, transparent pricing. Unlimited human agents are free forever. Only pay for AI resolutions. No contracts, cancel anytime."
+                keywords="helpdesk pricing, free customer support software, customer service pricing, AI agent cost, unlimited agents free"
+                canonicalUrl="https://doozadesk.com/pricing"
+            />
             <Navbar />
             <div className="pt-20">
-                <Pricing openModal={handlePricingAction} />
+                <Pricing openModal={handlePricingAction} headingLevel="h1" />
 
                 {/* FAQ Section */}
                 <div className="bg-white py-24">

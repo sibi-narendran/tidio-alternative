@@ -27,6 +27,8 @@ const Navbar = ({ openModal }) => {
                     </Link>
 
                     <div className="hidden md:flex items-center space-x-8">
+                        <Link to="/features" className="text-[15px] font-medium text-slate-600 hover:text-primary-600 transition-colors">Features</Link>
+                        <Link to="/pricing" className="text-[15px] font-medium text-slate-600 hover:text-primary-600 transition-colors">Pricing</Link>
                         <a href="https://app.doozadesk.com/app/login" onClick={openModal} className="text-[15px] font-medium text-slate-600 hover:text-primary-600 transition-colors">Login</a>
                         <a href="https://app.doozadesk.com/app/auth/signup" onClick={openModal} className="bg-slate-900 text-white px-5 py-2.5 rounded-full text-[15px] font-medium hover:bg-slate-800 transition-all hover:shadow-lg hover:-translate-y-0.5">
                             Create free account

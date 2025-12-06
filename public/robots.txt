@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /get-started
+Disallow: /app/*
+
+Sitemap: https://doozadesk.com/sitemap.xml
+
