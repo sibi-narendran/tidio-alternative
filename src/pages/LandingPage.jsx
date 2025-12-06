@@ -12,6 +12,7 @@ import BottomCTA from '../components/BottomCTA';
 import Footer from '../components/Footer';
 import BookingModal from '../components/BookingModal';
 import SEO from '../components/SEO';
+import FAQ, { faqs } from '../components/FAQ';
 
 function LandingPage() {
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -93,6 +94,17 @@ function LandingPage() {
                     "priceCurrency": "USD",
                     "description": "Free for unlimited human agents"
                 }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": faqs.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.question,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": faq.answer
+                    }
+                }))
             }
         ]
     };
@@ -115,6 +127,7 @@ function LandingPage() {
                 <Testimonials />
                 <Integrations />
                 <Pricing openModal={handleAction} />
+                <FAQ />
                 <BottomCTA openModal={handleAction} />
             </main>
             <Footer />

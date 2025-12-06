@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const Hero = ({ openModal }) => {
     return (
-        <div className="pt-40 pb-20 lg:pt-48 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+        <div className="pt-32 pb-16 md:pt-40 md:pb-20 lg:pt-48 lg:pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
             {/* Background Elements */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl -z-10 pointer-events-none">
                 <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-primary-100/50 rounded-full blur-3xl opacity-60 mix-blend-multiply animate-blob"></div>
@@ -55,7 +55,7 @@ const Hero = ({ openModal }) => {
                 </div>
 
                 {/* Dashboard Preview Image */}
-                <div className="mt-20 relative mx-auto max-w-6xl">
+                <div className="mt-12 md:mt-20 relative mx-auto max-w-6xl">
                     <div className="bg-slate-900 rounded-2xl p-2 shadow-2xl ring-1 ring-slate-900/10">
                         <div className="bg-slate-800 rounded-xl overflow-hidden aspect-[16/9] relative">
                             <img

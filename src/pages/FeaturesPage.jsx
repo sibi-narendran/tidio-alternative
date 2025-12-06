@@ -39,7 +39,7 @@ const FeaturesPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-white font-sans text-slate-900">
+        <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
             <SEO 
                 title="Features | AI Customer Support Tools"
                 description="Explore Doozadesk's powerful features: Unified Inbox, AI Agents, Omnichannel Support, and Advanced Analytics. Everything you need to delight customers."
@@ -47,8 +47,8 @@ const FeaturesPage = () => {
                 canonicalUrl="https://doozadesk.com/features"
             />
             <Navbar />
-            <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-                <div className="text-center mb-20">
+            <div className="pt-24 pb-12 md:pt-32 md:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                <div className="text-center mb-12 md:mb-20">
                     <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                         Everything you need to <br />
                         <span className="text-primary-600">delight your customers</span>
@@ -73,8 +73,8 @@ const FeaturesPage = () => {
                 </div>
 
                 {/* Feature Deep Dive */}
-                <div className="mt-32 space-y-32">
-                    <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="mt-16 md:mt-32 space-y-16 md:space-y-32">
+                    <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-16">
                         <div className="flex-1">
                             <h2 className="text-3xl font-bold text-slate-900 mb-6">Unified Inbox for All Channels</h2>
                             <p className="text-lg text-slate-600 mb-8">
@@ -100,7 +100,7 @@ const FeaturesPage = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+                    <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-16">
                         <div className="flex-1">
                             <h2 className="text-3xl font-bold text-slate-900 mb-6">AI Agents That Work 24/7</h2>
                             <p className="text-lg text-slate-600 mb-8">

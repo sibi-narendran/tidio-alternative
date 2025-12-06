@@ -2,7 +2,7 @@ import React from 'react';
 
 const BottomCTA = ({ openModal }) => {
     return (
-        <div className="py-24 bg-white">
+        <div className="py-16 md:py-24 bg-white">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 tracking-tight">
                     Ready to improve your customer support?

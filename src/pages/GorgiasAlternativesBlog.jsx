@@ -115,7 +115,7 @@ const GorgiasAlternativesBlog = () => {
     };
 
     return (
-        <div className="min-h-screen bg-white font-sans text-slate-900">
+        <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
             <SEO 
                 title="Top 5 Gorgias Alternatives in 2025 (Ranked & Reviewed)" 
                 description="Looking for a Gorgias alternative? We review the top 5 help desks for Shopify, comparing pricing, AI features, and native integration capabilities."
@@ -126,7 +126,7 @@ const GorgiasAlternativesBlog = () => {
             <Navbar openModal={handleAction} />
 
             {/* Hero Section */}
-            <div className="bg-slate-50 pt-32 pb-20 border-b border-slate-100">
+            <div className="bg-slate-50 pt-24 pb-12 md:pt-32 md:pb-20 border-b border-slate-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6">
                         <Star size={16} className="fill-primary-700" />
@@ -135,7 +135,7 @@ const GorgiasAlternativesBlog = () => {
                     <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
                         Top 5 <span className="text-primary-600">Gorgias Alternatives</span> in 2025
                     </h1>
-                    <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
                         where poeple are moving?
                     </p>
                     <div className="mt-6 text-sm text-slate-500 font-medium">
@@ -145,7 +145,7 @@ const GorgiasAlternativesBlog = () => {
             </div>
 
             {/* Main Content Layout */}
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
                 <div className="flex flex-col lg:flex-row justify-between lg:gap-12 items-start">
                     
                     {/* Sidebar (Desktop only) */}
@@ -257,9 +257,9 @@ const GorgiasAlternativesBlog = () => {
                                 <h2 className="text-3xl font-bold text-slate-900">Alternative #1: Dooza.co</h2>
                             </div>
                             
-                            <p className="text-lg text-slate-600 mb-6 font-medium">Known for: AI-Native Workflows & Shopify Deep Integration</p>
+                            <p className="text-base md:text-lg text-slate-600 mb-6 font-medium">Known for: AI-Native Workflows & Shopify Deep Integration</p>
                             
-                            <div className="prose prose-lg text-slate-600">
+                            <div className="prose md:prose-lg text-slate-600">
                                 <p className="mb-6">
                                     Dooza.co represents the next generation of e-commerce customer support. Unlike Gorgias, which was built in the pre-AI era, <strong>Dooza was built from the ground up for AI-native workflows</strong>. It doesn't just connect to Shopify via API—it deeply understands your infrastructure to deliver unprecedented automation.
                                 </p>
@@ -320,9 +320,9 @@ const GorgiasAlternativesBlog = () => {
                         {/* Richpanel Review */}
                         <section id="richpanel-review" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">Alternative #2: Richpanel</h2>
-                            <p className="text-lg text-slate-600 mb-6 font-medium">Known for: Self-Service Portal & Shopify Integration</p>
+                            <p className="text-base md:text-lg text-slate-600 mb-6 font-medium">Known for: Self-Service Portal & Shopify Integration</p>
                             
-                            <div className="prose prose-lg text-slate-600">
+                            <div className="prose md:prose-lg text-slate-600">
                                 <p className="mb-4">
                                     Richpanel is the other platform truly built for Shopify native flows. It pioneered the concept of self-service portals (like Amazon's "My Orders" page) for independent e-commerce brands.
                                 </p>
@@ -351,9 +351,9 @@ const GorgiasAlternativesBlog = () => {
                         {/* Zendesk Review */}
                         <section id="zendesk-review" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">Alternative #3: Zendesk</h2>
-                            <p className="text-lg text-slate-600 mb-6 font-medium">Known for: Enterprise Features & Scalability</p>
+                            <p className="text-base md:text-lg text-slate-600 mb-6 font-medium">Known for: Enterprise Features & Scalability</p>
                             
-                            <div className="prose prose-lg text-slate-600">
+                            <div className="prose md:prose-lg text-slate-600">
                                 <p className="mb-4">
                                     The industry veteran. Zendesk is powerful and serves every industry, not just e-commerce. It has thousands of integrations and enterprise-grade reporting.
                                 </p>
@@ -371,14 +371,14 @@ const GorgiasAlternativesBlog = () => {
                         {/* Other Alternatives */}
                         <section id="gladly-review" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">Alternative #4: Gladly</h2>
-                            <p className="text-lg text-slate-600 mb-4">
+                            <p className="text-base md:text-lg text-slate-600 mb-4">
                                 Focuses on "people, not tickets." It has a beautiful interface and is great for white-glove support. However, with a <strong>$1,800/month minimum</strong> (10 seats required), it's priced out of range for most growing brands.
                             </p>
                         </section>
 
                         <section id="reamaze-review" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">Alternative #5: Re:Amaze</h2>
-                            <p className="text-lg text-slate-600 mb-4">
+                            <p className="text-base md:text-lg text-slate-600 mb-4">
                                 A solid budget option for small teams. It covers the basics (live chat, email) well. However, its interface feels dated, and it lacks the deep "native" automation capabilities of Dooza or Richpanel.
                             </p>
                         </section>
@@ -386,7 +386,7 @@ const GorgiasAlternativesBlog = () => {
                         {/* Native Difference */}
                         <section id="native-difference" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-6">Why "Shopify Native" Matters</h2>
-                            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                            <p className="text-base md:text-lg text-slate-600 mb-8 leading-relaxed">
                                 Most helpdesks connect to Shopify via a basic API—they just pull data to display it. <strong>True native platforms</strong> (like Dooza & Richpanel) go deeper, acting as an extension of your store admin.
                             </p>
                             

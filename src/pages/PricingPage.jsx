@@ -39,7 +39,7 @@ const PricingPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-white font-sans text-slate-900">
+        <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
             <SEO 
                 title="Pricing | Free Unlimited Human Seats"
                 description="Simple, transparent pricing. Unlimited human agents are free forever. Only pay for AI resolutions. No contracts, cancel anytime."
@@ -51,7 +51,7 @@ const PricingPage = () => {
                 <Pricing openModal={handlePricingAction} headingLevel="h1" />
 
                 {/* FAQ Section */}
-                <div className="bg-white py-24">
+                <div className="bg-white py-16 md:py-24">
                     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>

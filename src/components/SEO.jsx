@@ -1,7 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, keywords, canonicalUrl, noindex, structuredData }) => {
+const SEO = ({ 
+  title, 
+  description, 
+  keywords, 
+  canonicalUrl, 
+  noindex, 
+  structuredData,
+  geo, // { region, placename, position }
+  hreflangs // Array of { lang, href }
+}) => {
   const siteTitle = 'Doozadesk';
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
 
@@ -12,6 +21,21 @@ const SEO = ({ title, description, keywords, canonicalUrl, noindex, structuredDa
       {keywords && <meta name="keywords" content={keywords} />}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
+      
+      {/* Geo Tags for Local SEO */}
+      {geo?.region && <meta name="geo.region" content={geo.region} />}
+      {geo?.placename && <meta name="geo.placename" content={geo.placename} />}
+      {geo?.position && (
+        <>
+          <meta name="geo.position" content={geo.position} />
+          <meta name="ICBM" content={geo.position} />
+        </>
+      )}
+
+      {/* Hreflang Tags for International SEO */}
+      {hreflangs?.map((hreflang, index) => (
+        <link key={index} rel="alternate" hreflang={hreflang.lang} href={hreflang.href} />
+      ))}
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

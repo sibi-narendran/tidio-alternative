@@ -3,7 +3,7 @@ import { Check, X, ArrowRight } from 'lucide-react';
 
 const SwitchComparison = ({ openModal }) => {
     return (
-        <section className="py-24 bg-slate-50 overflow-hidden">
+        <section className="py-16 md:py-24 bg-slate-50 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6 border border-primary-100">

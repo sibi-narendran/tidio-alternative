@@ -16,7 +16,7 @@
 }
 
 body {
-  @apply antialiased text-slate-600 bg-white font-sans;
+  @apply antialiased text-slate-600 bg-white font-sans overflow-x-hidden;
 }
 
 h1,

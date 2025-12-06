@@ -82,7 +82,7 @@ export default function BlogPost() {
     }
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white overflow-x-hidden">
             <SEO 
                 title={article.title}
                 description={article.excerpt || `${article.title} - Read more on Doozadesk Blog.`}
@@ -102,7 +102,7 @@ export default function BlogPost() {
             <Navbar />
 
             {/* Article Header */}
-            <article className="pt-32 pb-20">
+            <article className="pt-24 pb-12 md:pt-32 md:pb-20">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Back Button */}
                     <Link
@@ -148,11 +148,11 @@ export default function BlogPost() {
                     </div>
 
                     {/* Article Content */}
-                    <div className="prose prose-lg prose-slate max-w-none
+                    <div className="prose md:prose-lg prose-slate max-w-none
             prose-headings:font-bold prose-headings:text-slate-900
-            prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-12
-            prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-10
-            prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-8
+            prose-h1:text-3xl md:prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-12
+            prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-10
+            prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-8
             prose-p:text-slate-700 prose-p:leading-relaxed prose-p:mb-6
             prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
             prose-strong:text-slate-900 prose-strong:font-semibold
@@ -190,7 +190,7 @@ export default function BlogPost() {
             </article>
 
             {/* Newsletter CTA */}
-            <section className="pb-20 px-4 sm:px-6 lg:px-8">
+            <section className="pb-12 md:pb-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-slate-50 border border-slate-100 rounded-3xl p-8 lg:p-12 text-center">
                         <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl mb-6">

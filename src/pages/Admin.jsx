@@ -56,7 +56,7 @@ const Admin = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 p-8">
+        <div className="min-h-screen bg-slate-50 p-4 sm:p-8">
             <SEO 
                 title="Admin Dashboard" 
                 description="Admin dashboard for Doozadesk leads."

@@ -2,7 +2,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const AIOverlaySection = ({ openModal }) => {
     return (
-        <section className="py-24 bg-white border-t border-slate-100">
+        <section className="py-16 md:py-24 bg-white border-t border-slate-100 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}

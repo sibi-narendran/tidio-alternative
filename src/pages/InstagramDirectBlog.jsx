@@ -58,7 +58,7 @@ const InstagramDirectBlog = () => {
     };
 
     return (
-        <div className="min-h-screen bg-white font-sans text-slate-900">
+        <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
             <SEO 
                 title="What is Instagram Direct? A Simple Guide for Everyone" 
                 description="Curious about IG Direct? Here's the lowdown on Instagram Direct, why it's huge for businesses, and how tools like Dooza Desk help manage the DM chaos."
@@ -69,7 +69,7 @@ const InstagramDirectBlog = () => {
             <Navbar openModal={handleAction} />
 
             {/* Hero Section */}
-            <div className="bg-slate-50 pt-32 pb-20 border-b border-slate-100">
+            <div className="bg-slate-50 pt-24 pb-12 md:pt-32 md:pb-20 border-b border-slate-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-sm font-medium mb-6">
                         <MessageCircle size={16} />
@@ -83,7 +83,7 @@ const InstagramDirectBlog = () => {
             </div>
 
             {/* Main Content Layout */}
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
                 <div className="flex flex-col lg:flex-row justify-between lg:gap-12 items-start">
                     
                     {/* Sidebar (Desktop only) */}
@@ -131,7 +131,7 @@ const InstagramDirectBlog = () => {
                         {/* Introduction */}
                         <section id="introduction" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-6">What is IG Direct, Actually?</h2>
-                            <div className="prose prose-lg text-slate-600">
+                            <div className="prose md:prose-lg text-slate-600">
                                  {/* Embedded Video */}
                                  <div className="my-8 rounded-xl overflow-hidden shadow-lg border border-slate-200">
                                     <iframe 
@@ -166,7 +166,7 @@ const InstagramDirectBlog = () => {
                         {/* Features */}
                         <section id="features" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Businesses Love Instagram Direct</h2>
-                            <div className="prose prose-lg text-slate-600 mb-6">
+                            <div className="prose md:prose-lg text-slate-600 mb-6">
                                 <p>
                                     It’s pretty simple: Instagram Direct helps businesses sell more. When you DM a brand asking "hey, is this in stock?", you’re usually ready to buy. Businesses know this, so they try to reply as fast as possible to close the deal. It’s faster than email and feels way more personal.
                                 </p>
@@ -176,7 +176,7 @@ const InstagramDirectBlog = () => {
                         {/* Automation */}
                         <section id="automation" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-6">Speed Wins Sales</h2>
-                            <div className="prose prose-lg text-slate-600">
+                            <div className="prose md:prose-lg text-slate-600">
                                 <p className="mb-4">
                                     If a customer waits hours for a reply, they’ll buy from someone else. To stop this, businesses use three main tools:
                                 </p>
@@ -194,7 +194,7 @@ const InstagramDirectBlog = () => {
                         {/* Best Practices */}
                         <section id="best-practices" className="scroll-mt-28">
                             <h2 className="text-3xl font-bold text-slate-900 mb-6">Best Practices for DMs</h2>
-                            <div className="prose prose-lg text-slate-600 mb-6">
+                            <div className="prose md:prose-lg text-slate-600 mb-6">
                                 <p>
                                     Just like email marketing, managing DMs requires a strategy. According to <a href="https://business.instagram.com/" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 underline">Instagram for Business</a>, responding quickly can increase conversion rates by significant margins.
                                 </p>
