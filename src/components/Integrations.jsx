@@ -11,6 +11,7 @@ const Integrations = () => {
         { name: "Gorgias", icon: "https://logo.clearbit.com/gorgias.com" },
         { name: "Vapi Voice AI", icon: "https://logo.clearbit.com/vapi.ai" },
         { name: "Messenger", icon: "https://cdn.simpleicons.org/messenger" },
+        { name: "Slack", icon: "https://cdn.simpleicons.org/slack" },
         { name: "Websites", iconComponent: <Globe className="w-12 h-12 mb-4 opacity-75 group-hover:opacity-100 transition-opacity text-slate-500 group-hover:text-primary-600" /> }
     ];
 
